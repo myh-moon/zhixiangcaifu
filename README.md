@@ -1,3 +1,0 @@
-# zhixiangcaifu
-another version
-
