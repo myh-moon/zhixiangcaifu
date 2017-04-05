@@ -1,0 +1,292 @@
+//
+//  zichanbao.pch
+//  zichanbao
+//
+//  Created by zhixiang on 15/10/8.
+//  Copyright (c) 2015年 zhixiang. All rights reserved.
+//
+
+
+#ifndef zichanbao_zichanbao_pch
+#define zichanbao_zichanbao_pch
+#import "PureLayout.h"
+#import "UIView+Fram.h"     //相对坐标
+#import "BaseViewController.h"  //导航栏
+#import "AFNetworking.h"  //网络请求
+#import "MJRefresh.h"   //刷新
+#import "UIButton+Block.h"  //button 点击事件
+#import "MJExtension.h"
+#import "MBProgressHUD.h"  //提示框
+#import "CLLockVC.h"       //密码锁
+#import "AccountModel.h"   
+#import "NSString+AttributeText.h"
+#import "UIViewController+HUD.h"
+
+
+
+#endif
+
+//宏定义
+#define UIColorFromRGB(rgbValue,alphas) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:alphas]
+
+#define kScreenWidth  [UIScreen mainScreen].bounds.size.width
+#define kScreenHeight   [UIScreen mainScreen].bounds.size.height
+#define Navigationheight    44
+
+#define RGBCOLOR(r,g,b) [UIColor colorWithRed:r green:g blue:b alpha:1]
+#define RGBCOLOR1(r1,g1,b1) [UIColor colorWithRed:(r1)/255.0f green:(g1)/255.0f blue:(b1)/255.0f alpha:1]
+
+#define kNavigationColor  [UIColor colorWithRed:0.3647 green:0.1765 blue:0.3020 alpha:1]
+#define kNavigationColor1  [UIColor colorWithRed:0.3647 green:0.1765 blue:0.3020 alpha:0]
+
+#define kBackgroundColor  UIColorFromRGB(0xf2f2f2,1)
+#define lineColor11 [UIColor colorWithRed:0.9098 green:0.9137 blue:0.9176 alpha:1]
+#define kRedColor  [UIColor redColor]
+#define kYellowColor [UIColor orangeColor]
+#define kAlphaBackColor [UIColor colorWithRed:0.0000 green:0.0000 blue:0.0000 alpha:0.4]
+#define kWhiteColor [UIColor whiteColor]
+#define kWhiteColor1 UIColorFromRGB(0xffffff,0.6)
+
+
+#define kBlackColor  [UIColor blackColor] //黑色
+#define kGrayColor [UIColor grayColor] //灰色
+#define kLightGrayColor [UIColor lightGrayColor] //浅灰色
+#define kDarkGrayColor [UIColor darkGrayColor] //深灰色
+#define kPurpleColor UIColorFromRGB(0x831c7d,1)
+#define kBlueColor UIColorFromRGB(0x4674fc,1)
+
+
+#define font22 [UIFont systemFontOfSize:22]
+#define font18 [UIFont systemFontOfSize:18]
+#define font17 [UIFont systemFontOfSize:17]
+#define font14  [UIFont systemFontOfSize:14]
+#define font16 [UIFont systemFontOfSize:16]
+#define font12 [UIFont systemFontOfSize:12]
+#define font13 [UIFont systemFontOfSize:13]
+
+#define kBorderWidth 1
+
+#define kCorner1 4;
+
+#define kSmallPadding 15
+#define kBigPadding 30
+#define kSmallCellHeight 30
+#define kCellHeight 45
+#define kCellHeight1 40
+#define kCommitHeight 50  //提交按钮的高度
+#define kSpacePadding  20
+#define kSmallSpace 5
+
+//友盟appkey
+#define ZXUmengAppKey @"56558379e0f55aa428001e77"//56558379e0f55aa428001e77
+#define ZXUmengAppSecret  @"3k3lfxzdsa7yewgkvuoosi4sltpjcwqb"
+
+//链接地址
+#define ZXUmengAppUrl @"https://itunes.apple.com/cn/app/wu-hao-zhang-gui/id1030735463?mt=8"
+
+//微信
+#define WXAppID @"wx3a85409ff84012a5"
+#define WXAppSecret @"d4624c36b6795d1d99dcf0547af5443d"
+
+//QQ
+#define QQAppID @"1104965084"
+#define QQAppKey @"ma7xQW5Mow1mqqWS"
+
+//iTunes里面的AppleID
+#define AppleID @"1065452286"
+
+//使用block代替button点击事件
+#define ZXWeakWithNameAndObject(_obj, _name) __weak typeof(_obj) weak##_name = _obj
+
+/**
+ Define a weak for a given object.
+ */
+#define ZXWeak(_obj) ZXWeakWithNameAndObject(_obj, _obj)
+
+/**
+ Define a weak self.
+ */
+#define ZXWeakSelf ZXWeak(self)
+
+#define TOKEN [[NSUserDefaults standardUserDefaults] objectForKey:@"token"]
+//@"970cee847877a4eca3b1468d31fa0341"
+
+//接口
+#define ZXCF @"http://www.zhixiangcf.com"
+#define ZXCFnews  @"/app/public"          //000首页新闻宣传
+#define ZXCFlogin  @"/app/public/login"   //001登录
+#define ZXCFregist @"/app/public/reg"       //002注册
+#define ZXCFphone @"/app/public/sCode"       //003注册需发送的短信(type=1注册／／type=3找回密码)
+#define ZXCFregisterAgree @"/app/public/agreement"  //004注册界面的协议
+#define ZXCFpassFindCode @"/app/public/sCode"    //005找回密码的验证码
+#define ZXCFpasswordFind  @"/app/public/forget"  //006找回密码
+#define ZXCFifAuthenty  @"/app/member/idcard"  //007是否认证过
+#define ZXCFAuthenty  @"/app/member/idcard"    //008若没认证，则身份认证
+#define ZXCFcallPhone   @"/app/member/tel"  //009电话呼叫
+#define ZXCFchangeTel   @"/app/member/upPhone"  //010更改手机号
+#define ZXCFmainBid  @"/app/product"  //011首页的标
+#define ZXCFfinancialBid  @"/app/product/invest"   //012理财标（并且搜索）
+#define ZXCFmyAccount  @"/app/member"   //014我的账户
+#define ZXCFbindingBankCard  @"/app/member/bankcode"  //015点击”充值“验证是否绑定银行卡 (get)
+#define ZXCFprovince  @"/app/member/areas"   //016一级城市
+#define ZXCFBindingBank      @"/app/member/binding"    //017 确认绑定银行卡(post)
+#define ZXCFBindingBankCode  @"/app/member/bankcode"  //018 绑定银行卡里的获取验证码（post）
+#define ZXCFrechargeCode  @"/app/member/payCode"   //019充值获取验证码
+#define ZXCFrechargeFinish  @"/app/member/overpay"  //020充值完成
+#define ZXCFpacketGet   @"/app/member/getp"  //021红包（收到的）get
+#define ZXCFpacketSend  @"/app/member/sendp"  //022红包（发出的）get
+#define ZXCFscores   @"/app/member/score"  //023积分页面get
+//#define ZXCFscoresExchages @"/app/member/score"  //024积分兑换页面post
+#define ZXCFscoresRecods   @"/app/member/dhlist"  //025积分兑换记录get
+#define ZXCFscoreDetails   @"/app/member/sList"   //026积分明细
+#define ZXCFwithdraws   @"/app/member/withdraws"   //027提现
+#define ZXCFshare   @"/app/member/share"    //028我的分享
+#define ZXCFfundRecord  @"/app/member/record"  //029资金记录
+#define ZXCFplans     @"/app/member/backing"  //030回款计划
+#define ZXCFrepayment   @"/app/member/backMent"  //031还款计划
+#define ZXCFmyOrder   @"/app/member/yuyue"   //032我的预约
+#define ZXCFBorrow    @"/app/product/borrow"  //033借款信息
+//#define ZXCFBorrowFinish  @"/app/product/borrow"  //034借款完成
+#define ZXCFmyBorrow   @"/app/member/borrows"   //035我的借款
+#define ZXCFinvestDetails @"/app/product/investOne"  //036投资详情
+#define ZXCForderRecords  @"/app/product/records/yuyue"  //037预约记录
+#define ZXCFinvestRecords @"/app/product/records/touzi"  //038投资记录
+#define ZXCFmyInvestAgreement @"/app/product/agreement"    //039投资前协议
+#define ZXCFinvestCommit  @"/app/member/investing"      //040确认投资
+
+#define ZXCFinvestFinish  @"/app/member/investmoney"   //041完成投资
+#define ZXCForderFinish   @"/app/product/investyy"     //042完成预约
+#define ZXCFsendPacket    @"/app/member/s_pag"   //043发红包
+#define ZXCFmyInvest     @"/app/member/my_invests"  //44我的投资
+#define ZXCFmyDetailInvest  @"/app/member/my_invest"  //45我的详细投资
+#define ZXCFmyDetailInvestways  @"/app/member/outcome"  //46我的详细投资里面的还款方案
+#define ZXCFmydetaiInvestProtocol @"/app/member/index_tz"  //47我的投资详细里面的协议
+#define ZXCFloginCode  @"/app/public/codeLogin"  //48验证码登录
+#define ZXCFloginSendCode  @"/app/public/lCode"  //48验证码登录的发送验证码
+
+
+#define ZXCFsettingRepayCode @"/wapz/member/repwd" //011设置交易密码
+
+#define ZXCFshareRebate @"/wapz/member/shareCode"  //12分享返利
+
+//#define ZXCFmyAccount @"/wapz/member"     //013  我的账号
+
+//#define ZXCFsendOutRedPacket @"/wapz/member/packet"     //014  我发出的红包
+
+#define ZXCFreceiveRedPacket @"/wapz/member/packets"     //015  我收到的红包
+
+#define ZXCFCommitAdvice @"/wapz/member/opinion"   //016  意见反馈
+
+#define ZXCFcheckIfSetCard @"/wapz/member/bank"   //017提现校验是否设置了提现银行卡
+
+//#define ZXCFwithdrawCard @"/wapz/member/withdraw"  //018提现银行卡
+
+#define ZXCFwithdrawOperation @"/wapz/member/dowithdraw"  //019提现操作
+
+#define ZXCFRecentChargeRecord @"/wapz/member/charge"    //20最近七天充值纪录
+
+#define ZXCFidentifier @"/wapz/member/addCard"    //21身份验证
+
+//#define ZXCFinvestDetail @"/wapz/index/show"   //022投资详情
+
+#define ZXCFreceivablePlan @"/wapz/member/backing"     //023回款计划－－未还
+
+#define ZXCFreceivablePlanAlready @"/wapz/member/backing?status=over"  //023回款计划－－已还
+
+#define ZXCFinvestAll @"/wapz/member/invest"  // 024投资总表
+
+#define ZXCFdetailInvest @"/wapz/member/investOne"  // 025投资总表(详情)
+
+#define ZXCFinvestEnsure @"/wapz/member/confirmation"  //027投资确认
+
+#define ZXCFensureInvestShareCode @"/wapz/member/code"  //028投资确认分享码
+
+#define ZXCFinvest @"/wapz/member/investment"  //029投资
+
+#define ZXCFshareRedPacket @"/wapz/member/send_pag"  //030分享红包
+
+#define ZXCFrobRedpacket @"/wapz/index/rob"   //031抢红包
+
+#define ZXCFrechargeInavailable @"/wapz/member/recharge"  //032充值可用余额
+
+#define ZXCFbankList @"/wapz/member/bank_num"  //033银行列表
+
+#define ZXCFcheckWhetherBindingCard @"/wapz/member/binding"  //034检查是否绑定银行卡
+
+#define ZXCFbindBankCardIdentifierCode @"/wapz/member/binding"  //035绑定银行卡验证码
+
+#define ZXCFpayIdentifiercode @"/wapz/member/zjpay"  //036支付验证码
+
+#define ZXCFsetting @"/wapz/member/setting"   //037设置
+
+#define ZXCFalreadyVerify @"/wapz/member/statusId"  //038已验证
+
+#define ZXCFsupportBankCard @"/wapz/index/banks"   //040充值支持的银行
+
+#define ZXCFrecentSevenDaysDetail @"/wapz/member/chargeOne"  //041最近七天充值记录详情
+
+#define ZXCFredPacketDetail @"/wapz/member/packetinfo"   //042红包详情
+
+#define ZXCFGuide @"/wapz/index/faq?type=hy1"            //043   5号指南
+
+#define ZXCFHelpOnLine @"/wapz/index/faq?type=help"      //044   在线帮助
+
+#define ZXCFRegistProtocol @"/wapz/index/faq?type=regxieyi"     //045    注册协议
+
+#define ZXCFBorrowProtocol @"/wapz/index/faq?type=hetong"      //046    借款协议
+
+#define ZXCFUserProtol @"/wapz/index/faq?type=userxieyi"    //047    用户协议
+
+#define ZXCFBetweenProtol @"/wapz/member/downfile"    //048    居间协议
+
+#define ZXCFFixed @"/wapz/index/floating"    //050    首页浮动收益、固定收益
+
+#define ZXCFappoint @"/wapz/member/yy"       //051   我的预约
+
+#define ZXCFmyAppoint @"/wapz/index/yy_save"  //052我要预约
+
+#define ZXCFAppointAndJoin @"/wapz/index/yy_detail"  //053预约，参团详情
+
+#define ZXCFsearch @"/wapz/index/search"   //054搜索详情页
+
+#define ZXCFjoinEnsure @"/wapz/member/tg_invest"  //055参团投资确认
+
+#define ZXCFjoin @"/wapz/member/tg_investconfirm"  //056参团投资
+
+#define ZXCFads @"/wapz/index/ads"     //059广告
+
+#define ZXCFrenameRepayCode @"/wapz/member/uprepwd"  //060修改支付密码
+
+#define ZXCFshareCode @"/wapz/index/share"  //061分享码
+
+#define ZXCFoldCode @"/wapz/member/uprepwdold" //062旧密码验证
+
+#define ZXCFnewCode @"/wapz/member/uprepwdnew" //063新密码修改
+
+#define ZXCFrechargePay @"/wapz/member/zjcode"  //064充值支付
+
+#define ZXCFremoveBankCard @"/wapz/member/changeCard" //066解除绑定银行卡
+
+
+///////new
+#define ZXCFMyInvestDetailsOfWindReport @"/app/member/fk"  //我的投资详情－风控报告
+#define ZXCFMyInteExchangeOfScoreChoose @"/app/member/scoreso" //积分管理－积分筛选
+#define ZXCFMyInteExchangeOfDetails @"/app/member/allc" //积分管理－积分筛选产品详情
+#define ZXCFMyInteExchangeOfDetailPay @"/app/member/order" //积分管理－积分筛选产品详情-付款
+#define ZXCFScoresRecodsOfDetails   @"/app/member/dhlists"  //025积分兑换详情get
+
+
+#define ZXCFReceiptAddressOfAdd @"/app/member/address"  //添加地址
+
+//渠道中介channel
+#define ZXCFChannelOfBillString @"/app/member/billmanage" // 账单列表
+#define ZXCFChannelOfRebateString @"/app/member/returnpoint" // 返点列表
+#define ZXCFChannelOfIntoPiecesString @"/app/member/comeinpiece"  //进件列表
+#define ZXCFChannelOfEstimateString @"/app/member/get_estimate"  //预估列表
+#define ZXCFChannelOfEstimateAddString @"/app/member/add_estimate"  //添加预估
+#define ZXCFChannelOfEstimateSalesString @"/app/member/get_seller"  //添加预估－销售
+#define ZXCFChannelOfEstimateHouseTypeString @"/app/member/get_housetype"  //添加预估－房产类型
+#define ZXCFChannelOfEstimateDetailsString @"/app/member/estimateshow"  //预估详情
+
+
+
